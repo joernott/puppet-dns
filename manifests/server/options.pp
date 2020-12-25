@@ -154,7 +154,7 @@
 #    forwarders => [ '8.8.8.8', '8.8.4.4' ],
 #   }
 #
-include dns::server::params
+
 define dns::server::options (
   $allow_query = [],
   $allow_recursion = [],
@@ -190,10 +190,9 @@ define dns::server::options (
   $valid_check_names = ['fail', 'warn', 'ignore']
   $valid_forward_policy = ['first', 'only']
   $cfg_dir = $::dns::server::params::cfg_dir
-
-  if ! defined(Class['::dns::server']) {
-    fail('You must include the ::dns::server base class before using any dns options defined resources')
-  }
+  
+  require '::dns::server'
+  require '::dns::server::params'
 
   validate_string($forward_policy)
   if $forward_policy != undef and !member($valid_forward_policy, $forward_policy) {
