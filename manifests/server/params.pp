@@ -36,7 +36,7 @@ class dns::server::params {
       $owner              = 'named'
       $package            = 'bind'
       $service            = 'named'
-      $necessary_packages = [ 'bind', ]
+      $necessary_packages = [ 'bind', 'bind-utils']
       $default_file       = '/etc/sysconfig/named'
       $default_template   = 'default.redhat.erb'
       if $::operatingsystemmajrelease =~ /^[1-5]$/ {
