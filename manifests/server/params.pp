@@ -31,7 +31,7 @@ class dns::server::params {
       $working_dir        = "${data_dir}/data"
       $root_hint          = "${data_dir}/named.ca"
       $rfc1912_zones_cfg  = '/etc/named.rfc1912.zones'
-      $rndc_key_file      = '/etc/named.root.key'
+      $rndc_key_file      = '/etc/rndc.key'
       $group              = 'named'
       $owner              = 'named'
       $package            = 'bind'
